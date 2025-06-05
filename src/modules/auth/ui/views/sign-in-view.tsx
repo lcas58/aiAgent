@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { OctagonAlertIcon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import { FcGoogle } from 'react-icons/fc';
 import { z } from 'zod';
 
 import { Alert, AlertTitle } from '@/components/ui/alert';
@@ -30,7 +31,6 @@ const formSchema = z.object({
 export const SignInView = () => {
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
-  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,10 +47,10 @@ export const SignInView = () => {
       {
         email: data.email,
         password: data.password,
+        callbackURL: '/',
       },
       {
         onSuccess: () => {
-          router.push('/');
           setIsPending(false);
         },
         onError: ({ error }) => {
@@ -121,7 +121,7 @@ export const SignInView = () => {
                     Google
                   </Button>
                   <Button variant="outline" type="button" className="w-full">
-                    Google
+                    <FcGoogle />
                   </Button>
                 </div>
                 <div className="text-center text-sm">

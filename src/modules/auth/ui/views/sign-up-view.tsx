@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { OctagonAlertIcon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import { FcGoogle } from 'react-icons/fc';
 import { z } from 'zod';
 
 import { Alert, AlertTitle } from '@/components/ui/alert';
@@ -57,10 +58,10 @@ export const SignUpView = () => {
         email: data.email,
         name: data.name,
         password: data.password,
+        callbackURL: '/',
       },
       {
         onSuccess: () => {
-          router.push('/');
           setIsPending(false);
         },
         onError: ({ error }) => {
@@ -163,7 +164,7 @@ export const SignUpView = () => {
                     Google
                   </Button>
                   <Button variant="outline" type="button" className="w-full">
-                    Google
+                    <FcGoogle />
                   </Button>
                 </div>
                 <div className="text-center text-sm">
