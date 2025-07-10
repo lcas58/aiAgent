@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <SidebarProvider>
       <DashboardSidebar />
-      <main className="flex flex-col h-screen">
+      <main className="flex flex-col h-screen w-full">
         <DashboardNavbar />
         {children}
       </main>
